@@ -1,7 +1,7 @@
 name: End-to-end tests
 on:
   schedule:
-    - cron: '*/5 13 * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 jobs:
   cypress-run:
