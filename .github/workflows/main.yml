@@ -1,7 +1,13 @@
 name: End-to-end tests
+<<<<<<< HEAD
 on:
   schedule:
     - cron: '23 13 * * *'
+=======
+on: 
+ schedule:
+   - cron: '10 13 * * *'
+>>>>>>> ff1e1153db0707e873426d92acc732f6887b9438
  workflow_dispatch:
 jobs:
   cypress-run:
