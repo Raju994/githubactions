@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 jobs:
   cypress-run:
-    runs-on: [self-hosted, linux, x64, docker]
+    runs-on: [ubuntu-latest, macos-latest, windows-latest]
     steps:
       - name: Setup node
         uses: actions/setup-node@v3
