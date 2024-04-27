@@ -1,0 +1,49 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1714241894208' stop='1714241899218'>
+    <name>template spec</name>
+    <title>template spec</title>
+    <test-cases>
+        <test-case start='1714241894208' status='broken' stop='1714241899218'>
+            <name>passes</name>
+            <title>passes</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+            <failure>
+                <message>`cy.task('sendMail')` failed with the following error:
+                
+                The 'task' event has not been registered in the setupNodeEvents method. You must register it before using cy.task()
+                
+                Fix this in your setupNodeEvents method here:
+                C:\githubactions\cypress.config.js
+                
+                https://on.cypress.io/api/task
+                
+                Because this error occurred during a `after all` hook we are skipping all of the remaining tests.</message>
+                <stack-trace>CypressError: `cy.task('sendMail')` failed with the following error:
+                
+                The 'task' event has not been registered in the setupNodeEvents method. You must register it before using cy.task()
+                
+                Fix this in your setupNodeEvents method here:
+                C:\githubactions\cypress.config.js
+                
+                https://on.cypress.io/api/task
+                
+                Because this error occurred during a `after all` hook we are skipping all of the remaining tests.
+                    at &lt;unknown> (https://example.cypress.io/__cypress/runner/cypress_runner.js:135366:72)
+                    at tryCatcher (https://example.cypress.io/__cypress/runner/cypress_runner.js:1807:23)
+                    at Promise._settlePromiseFromHandler (https://example.cypress.io/__cypress/runner/cypress_runner.js:1519:31)
+                    at Promise._settlePromise (https://example.cypress.io/__cypress/runner/cypress_runner.js:1576:18)
+                    at Promise._settlePromise0 (https://example.cypress.io/__cypress/runner/cypress_runner.js:1621:10)
+                    at Promise._settlePromises (https://example.cypress.io/__cypress/runner/cypress_runner.js:1697:18)
+                    at _drainQueueStep (https://example.cypress.io/__cypress/runner/cypress_runner.js:2407:12)
+                    at _drainQueue (https://example.cypress.io/__cypress/runner/cypress_runner.js:2400:9)
+                    at Async._drainQueues (https://example.cypress.io/__cypress/runner/cypress_runner.js:2416:5)
+                    at Async.drainQueues (https://example.cypress.io/__cypress/runner/cypress_runner.js:2286:14)
+                From Your Spec Code:
+                    at Context.eval (webpack://githubactions/./cypress/support/e2e.js:22:7)</stack-trace>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>
