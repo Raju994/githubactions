@@ -18,7 +18,3 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
-after(() => {
-    cy.task('sendMail', 'This will be output to email address')
-      .then(result => console.log(result));
-  })
