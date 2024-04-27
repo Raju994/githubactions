@@ -4,12 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "allure-run": "npx cypress run --spec cypress\\e2e --reporter mocha-allure-reporter",
+    "report": "allure generate allure-results --clean -o allure-report && allure open allure-report"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^13.8.0"
+    "archiver": "^7.0.1",
+    "cypress": "^13.8.0",
+    "fs": "^0.0.1-security",
+    "nodemailer": "^6.9.13",
+    "path": "^0.12.7",
+    "puppeteer": "^22.7.1"
+  },
+  "devDependencies": {
+    "allure-cypress": "^2.15.1"
   }
 }
