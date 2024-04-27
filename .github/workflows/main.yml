@@ -1,8 +1,7 @@
 name: End-to-end tests
 on:
-  schedule:
-    - cron: '32 20 * * *'
- # workflow_dispatch:
+  
+  workflow_dispatch:
 jobs:
   cypress-run:
     runs-on: [self-hosted, linux, x64, docker]
