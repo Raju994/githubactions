@@ -1,21 +1,24 @@
 name: End-to-end tests
 on:
-  
   workflow_dispatch:
+
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup node
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '14'
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install dependencies
-        run: npm install 
-      - name: Run cypress Tests
+      - name: Install Dependencies
+        run: npm install
+      - name: Install Allure
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install allure -y
+      - name: Run Cypress Tests
         run: npm run allure-run
-      - name: Get Report
-        run: npm run report 
-        
+      - name: Generate Allure Report
+        run: npm run report
