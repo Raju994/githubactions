@@ -1,11 +1,10 @@
 name: End-to-end tests
 on:
-  schedule:
-    - cron: '32 20 * * *'
- # workflow_dispatch:
+  
+  workflow_dispatch:
 jobs:
   cypress-run:
-    runs-on: [self-hosted, linux, x64, docker]
+    runs-on: ubuntu-latest
     steps:
       - name: Setup node
         uses: actions/setup-node@v3
@@ -16,4 +15,7 @@ jobs:
       - name: Install dependencies
         run: npm install 
       - name: Run cypress Tests
-        run: npm run test
+        run: npm allure-run
+      - name: Get Report
+        run: npm run report 
+        
