@@ -20,7 +20,7 @@ jobs:
         run: |
           npx cypress run
           mkdir -p cypress/reports
-          mv mochawesome-report/mochawesome.json cypress/reports/mochawesome.json
+          mv cypress/reports/html/.jsons/mochawesome.json cypress/reports/mochawesome.json
       - name: Commit reports
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
