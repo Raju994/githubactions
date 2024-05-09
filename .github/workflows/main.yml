@@ -15,7 +15,5 @@ jobs:
       - name: Install dependencies
         run: npm install 
       - name: Run cypress Tests
-        run: npm run allure-run
-      - name: Get Report
-        run: npm run report 
+        run: npx cypress run
         
