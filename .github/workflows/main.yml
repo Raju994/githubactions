@@ -15,5 +15,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Install dependencies
         run: npm install 
-      - name: Run cypress Tests
-        run: npm run test
+      - name: Run Cypress tests with Mochawesome reporter
+        run: |
+          npx cypress run --reporter mochawesome
+          mkdir -p cypress/reports
+          mv mochawesome-report/mochawesome.json cypress/reports/mochawesome.json
