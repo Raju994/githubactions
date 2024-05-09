@@ -23,4 +23,8 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "chore: Update test reports"
+<<<<<<< HEAD
           file_pattern: "cypress/reports/*.*"
+=======
+          file_pattern: "cypress/reports/*.*"
+>>>>>>> 6e79429d939dc15edf443f384755bd8de008613e
