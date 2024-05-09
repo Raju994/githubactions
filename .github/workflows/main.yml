@@ -1,26 +1,21 @@
 name: End-to-end tests
 on:
+  
   workflow_dispatch:
-
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Node.js
+      - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: '14'
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install Dependencies
-        run: npm install
-      - name: Install Allure
-        run: |
-          wget https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.14.0/allure-commandline-2.14.0.zip
-          unzip allure-commandline-2.14.0.zip -d /opt
-          sudo ln -s /opt/allure-2.14.0/bin/allure /usr/bin/allure
-          allure --version
-      - name: Run Cypress Tests
+      - name: Install dependencies
+        run: npm install 
+      - name: Run cypress Tests
         run: npm run allure-run
-      - name: Generate Allure Report
-        run: npm run report
+      - name: Get Report
+        run: npm run report 
+        
