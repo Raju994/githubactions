@@ -1,22 +1,32 @@
-name: End-to-end tests
+name: Cypress E2E Tests
+
 on: 
- # schedule:
-  #  - cron: '*/5 * * * *'
+  # schedule:
+    # - cron: '0 4 * * *'
   workflow_dispatch:
+
 jobs:
   cypress-run:
     runs-on: [self-hosted, linux, x64, docker]
+    strategy:
+      fail-fast: false
+      matrix:
+        spec_file:
+          - cypress/e2e/First.spec.cy.js 
     steps:
-      - name: Setup node
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '14'
+
       - name: Checkout
         uses: actions/checkout@v4
+     
       - name: Install dependencies
-        run: npm install 
+        run: npm install
+
       - name: Run Cypress tests with Mochawesome reporter
         run: |
-          npx cypress run --reporter mochawesome
+          npx cypress run --spec ${{matrix.spec_file}} --reporter mochawesome
           mkdir -p cypress/reports
           mv mochawesome-report/mochawesome.json cypress/reports/mochawesome.json
