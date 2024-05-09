@@ -16,7 +16,7 @@ jobs:
         run: npm install 
       - name: Run cypress Tests
         run: |
-          npx cypress run
+          npx cypress run --env screenshotOnRunFailure=true
           mkdir -p cypress/reports
           mv mochawesome-report/mochawesome.json cypress/reports/mochawesome.json
       - name: Commit reports
