@@ -1,28 +1,6 @@
 name: End-to-end tests
 on:
   workflow_dispatch:
-
-jobs:
-  cypress-run:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Install dependencies
-        run: npm install 
-      - name: Run cypress Tests
-        run: |
-          npx cypress run --env screenshotOnRunFailure=true
-          mkdir -p cypress/reports
-          mv mochawesome-report/mochawesome.json cypress/reports/mochawesome.json
-      - name: Commit reports
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "chore: Update test reports"
 jobs:
   cypress-test:
     name: Run on Chrome 83
