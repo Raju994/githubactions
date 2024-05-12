@@ -26,3 +26,6 @@ jobs:
         with:
           name: mochawesome-reports
           path: cypress/reports/*.json
+      - name: Debug
+        run: ls -R cypress/reports
+
