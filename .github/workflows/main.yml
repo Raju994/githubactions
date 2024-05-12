@@ -19,7 +19,7 @@ jobs:
         run: npm install
 
       - name: Run Cypress Tests
-        run: npm run 
+        run: npx cypress run 
 
       - name: copy test execution res
         run: |
