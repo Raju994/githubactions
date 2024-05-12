@@ -31,8 +31,8 @@ jobs:
       - name: generate html
         run: num run generate:report
       
-      - name: Deploy report 
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{secrets.ACCESS_TOKEN}}
-          publish_dir: ./public
+      # - name: Deploy report 
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{secrets.ACCESS_TOKEN}}
+      #     publish_dir: ./public
