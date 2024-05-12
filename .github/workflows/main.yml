@@ -20,7 +20,7 @@ jobs:
 
       - name: Run Cypress Tests
         run: |
-          mkdir -p cypress/reports   # Ensure the directory exists
+          mkdir -p cypress/reports   
           npx cypress run --reporter mochawesome
 
       - name: Save Mochawesome Reports as Artifact
