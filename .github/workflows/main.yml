@@ -21,18 +21,4 @@ jobs:
       - name: Run Cypress Tests
         run: npx cypress run 
 
-      - name: copy test execution res
-        run: |
-          mkdir public
-          # cp -r cypress/vedios public/vedios
-          # cp -r cypress/screenshots public/screenshots
-      - name: merge
-        run: npm run combine:report
-      - name: generate html
-        run: num run generate:report
-      
-      # - name: Deploy report 
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{secrets.ACCESS_TOKEN}}
-      #     publish_dir: ./public
+     
