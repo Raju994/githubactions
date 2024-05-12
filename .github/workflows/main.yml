@@ -19,13 +19,13 @@ jobs:
         run: npm install
 
       - name: Run Cypress Tests
-        run: npx cypress run
+        run: npx cypress run --reporter mochawesome
 
       - name: Save Mochawesome Reports as Artifact
         uses: actions/upload-artifact@v2
         with:
           name: mochawesome-reports
           path: cypress/reports/*.json
+          
       - name: Debug
         run: ls -R cypress/reports
-
