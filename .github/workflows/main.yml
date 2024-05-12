@@ -1,26 +1,28 @@
 name: End-to-end tests
+
 on:
   workflow_dispatch:
+
 jobs:
-  cypress-test:
-    name: Run on Chrome 83
-    runs-on: ubuntu-18.04
-    container: cypress/browsers: node12.18.0-chrome83-ff77
+  cypress-run:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Install cypress and verify
-        run: |
-          npm ci
-          $(npm bin)/cypress verify
-      - name: Run Cypress tests
-        run: npm run test: chrome
-        continue-on-error: false
-      - name: Copy test execution videos and screenshots
-        run: |
-          mkdir public
-          cp -r cypress/videos public/videos
-          cp -r cypress/screenshots public/screenshots
-      - name: Merge test reports
-        run: npm run combine: report
-      - name: Generate HTML report
-        run: npm run generate:report
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Cypress Tests
+        run: npm run cy:run
+
+      - name: Save Mochawesome Reports as Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: mochawesome-reports
+          path: cypress/reports/*.json
