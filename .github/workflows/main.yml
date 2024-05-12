@@ -19,10 +19,15 @@ jobs:
         run: npm install
 
       - name: Run Cypress Tests
-        run: npm run cy:run
+        run: npm run 
 
-      - name: Save Mochawesome Reports as Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: mochawesome-reports
-          path: cypress/reports/*.json
+      - name: copy test execution res
+        run: |
+          mkdir public
+          cp -r cypress/vedios public/vedios
+          cp -r cypress/screenshots public/screenshots
+      - name: merge
+        run: npm run combine:report
+      - name: generate html
+        run: num run generate:report
+      
