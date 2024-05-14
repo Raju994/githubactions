@@ -44,7 +44,12 @@ jobs:
 
       - name: Zip Artifact
         run: zip -r test-results.zip /tmp/test-results
-
+      - name: git add 
+        run: git add .
+      - name: git commit
+        run: git commit -m "report"
+      - name: git push
+        run: git push
       - name: Send Email
         uses: dawidd6/action-send-mail@v2
         with:
