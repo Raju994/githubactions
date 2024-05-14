@@ -7,27 +7,32 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '14'
 
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
       - name: Install Dependencies
         run: npm install
+
+      - name: Install Cypress
+        run: npx cypress install
+
       - name: Run Tests
         run: npx cypress run
-      - name: git add
-        run: git add .
-      - name: mail
-        run: git config --global user.email "vraju9949@gmail.com"
-      - name: username
-        run: git config --global user.name "Uppala Raju"
-      - name: git commit
-        run: git commit -m "report"
-      - name: git push
-        run: git push
 
-     
+      - name: Configure Git
+        run: |
+          git config --global user.email "vraju9949@gmail.com"
+          git config --global user.name "Uppala Raju"
+
+      - name: Commit Changes
+        run: |
+          git add .
+          git commit -m "Add Cypress test report"
+      
+      - name: Push Changes
+        run: git push
