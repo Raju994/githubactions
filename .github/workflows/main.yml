@@ -21,6 +21,10 @@ jobs:
         run: npx cypress run
       - name: git add
         run: git add .
+      - name: mail
+        run: git config --global user.email "vraju9949@gmail.com"
+      - name: username
+        run: git config --global user.name "Uppala Raju"
       - name: git commit
         run: git commit -m "report"
       - name: git push
