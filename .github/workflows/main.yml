@@ -24,42 +24,17 @@ jobs:
       - name: Run Tests
         run: npx cypress run --spec cypress/e2e/First.spec.cy.js
 
-      - name: Create Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-results
-          path: |
-            cypress/reports/html/assets
-            cypress/reports/html/index.html
+      - name: Configure Git
+        run: |
+          git config --global user.email "vraju9949@gmail.com"
+          git config --global user.name "Uppala Raju"
 
-  send-email:
-    needs: cypress-run
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: test-results
-          path: /tmp/test-results
-
-      - name: Zip Artifact
-        run: zip -r test-results.zip /tmp/test-results
-      - name: git add 
-        run: git add .
-      - name: git commit
-        run: git commit -m "report"
-      - name: git push
+      - name: Commit Changes
+        run: |
+          git add .
+          git commit -m "Add Cypress test report"
+      
+      - name: Push Changes
         run: git push
-      - name: Send Email
-        uses: dawidd6/action-send-mail@v2
-        with:
-          server_address: smtp.gmail.com
-          server_port: 587
-          username: vraju9949
-          password: dqcn wnwg wwxn bdso
-          from: vraju9949@gmail.com
-          subject: "Cypress Test Results"
-          body: "Attached are the Cypress test results."
-          to: vraju9949@gmail.com
-          attachments: |
-            /tmp/test-results.zip
+      
+      
