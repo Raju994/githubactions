@@ -52,6 +52,7 @@ jobs:
           server_port: 587
           username: vraju9949
           password: dqcn wnwg wwxn bdso
+          from: vraju9949@gmail.com
           subject: "Cypress Test Results"
           body: "Attached are the Cypress test results."
           to: vraju9949@gmail.com
