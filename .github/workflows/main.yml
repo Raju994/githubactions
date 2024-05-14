@@ -17,20 +17,13 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
+      - name: Run Tests
+        run: npx cypress run
+      - name: git add
+        run: git add .
+      - name: git commit
+        run: git commit -m "report"
+      - name: git push
+        run: git push
 
-      - name: Create Reports Directory
-        run: mkdir -p cypress/reports
-
-      - name: Run Cypress Tests and Generate HTML Report
-        run: |
-          mkdir -p cypress/reports
-          npx cypress run --reporter mochawesome
-          
-      - name: Save Mochawesome Reports as Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: mochawesome-reports
-          path: cypress/reports/*.json
-
-      - name: Debug Reports Directory
-        run: ls -R cypress/reports
+     
