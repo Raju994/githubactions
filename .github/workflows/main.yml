@@ -22,7 +22,7 @@ jobs:
         run: npx cypress install
 
       - name: Run Tests
-        run: npx cypress run --spec cypress/e2e/First.spec.cy.js
+        run: npx cypress run
 
       - name: Configure Git
         run: |
