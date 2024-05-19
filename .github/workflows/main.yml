@@ -37,4 +37,4 @@ jobs:
       - name: Push Changes
         run: git push
       - name: Email
-        run: node integration\email.js
+        run: node integration/email.js
