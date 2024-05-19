@@ -36,16 +36,5 @@ jobs:
       
       - name: Push Changes
         run: git push
-      
-      - name: Email report
-        uses: dawidd6/action-send-mail@v2
-        with:
-          server_address: smtp.example.com
-          server_port: 587
-          username: vraju9949@gmail.com
-          password: dqcn wnwg wwxn bdso
-          subject: Cypress Test Report
-          body: Cypress test report attached.
-          from: vraju9949@gmail.com
-          to: vraju9949@gmail.com
-          attachments: cypress/reports/html/index.html
+      - name: Email
+        run: node integration\email.js
