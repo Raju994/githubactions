@@ -1,10 +1,10 @@
 
 
-const nodemailer = require('nodemailer');
-const fs = require('fs');
+import { createTransport } from 'nodemailer';
+import fs from 'fs';
 
 async function sendEmail() {
-  let transporter = nodemailer.createTransport({
+  let transporter = createTransport({
     service: 'gmail', // or another email service
     auth: {
       user: 'vraju9949@gmail.com',
