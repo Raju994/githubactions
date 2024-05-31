@@ -46,8 +46,8 @@ jobs:
 
       - name: List report files
         run: ls -la cypress/reports
-      - name: Generate Cypress Report
-        run: npm run cy:report
+      # - name: Generate Cypress Report
+      #   run: npm run cy:report
       - name: Inline CSS in Cypress Report
         run: node inlineCss.js
       - name: Send Cypress Report via Email
