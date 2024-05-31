@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "allure-run": "npx cypress run --spec cypress/e2e --reporter mocha-allure-reporter",
-    "report": "npx mochawesome-merge cypress/reports/*.json | npx mochawesome-report-generator -o cypress/reports"
+    "cy:run": "cypress run",
+    "cy:report": "npx mochawesome-merge cypress/reports/*.json | npx mochawesome-report-generator -o cypress/reports"
   },
   "keywords": [],
   "author": "",

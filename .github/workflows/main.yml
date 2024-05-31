@@ -11,17 +11,34 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Cache Cypress binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-cypress-
+
       - name: Install dependencies
         run: npm install
+
       - name: Install Cypress
         run: npx cypress install
+
       - name: Run Cypress tests
-        run: npx cypress run
+        run: npm run cy:run
+
+      - name: List report files
+        run: ls -la cypress/reports
 
       - name: Generate Cypress Report
-        run: npm run report
+        run: npm run cy:report
 
       - name: Send Cypress Report via Email
         run: node sendEmail.js
+      - name: List report files
+        run: ls -la cypress/reports
 
-
+    env:
+      EMAIL_USER: ${{ secrets.EMAIL_USER }}
+      EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
