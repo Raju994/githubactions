@@ -1,10 +1,10 @@
 
 
-import { createTransport } from 'nodemailer';
-import fs from 'fs';
+const nodemailer = require('nodemailer');
+const fs = require('fs');
 
 async function sendEmail() {
-  let transporter = createTransport({
+  let transporter = nodemailer.createTransport({
     service: 'gmail', // or another email service
     auth: {
       user: 'vraju9949@gmail.com',
@@ -20,7 +20,7 @@ async function sendEmail() {
     attachments: [
       {
         filename: 'report.html',
-        path: './cypress/reports/report.html',
+        path: 'cypress/reports/index.html',
         contentType: 'text/html'
       }
     ]
