@@ -40,7 +40,9 @@ jobs:
         run: ls -la cypress/reports
 
       - name: Overwrite Existing Report
-        run: mv cypress/reports/*.html cypress/reports/index.html
+        run: |
+         mkdir -p cypress/reports
+         mv cypress/reports/*.html cypress/reports/index.html
 
       - name: Send Cypress Report via Email
         run: node integration/email.js
