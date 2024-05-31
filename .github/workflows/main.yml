@@ -30,29 +30,20 @@ jobs:
 
       - name: Run Cypress tests
         run: npm run cy:run
-     
-
 
       - name: Configure Git
         run: |
           git config --global user.name 'Raju'
           git config --global user.email 'vraju9949@gmail.com'
-      - name: commit
-        run: git add .
-      - name: commit
-        run: git commit -m "Commit generated Cypress reports"
-      - name: push
-        run: git push 
-
+      
       - name: List report files
         run: ls -la cypress/reports
-      # - name: Generate Cypress Report
-      #   run: npm run cy:report
-      # - name: Inline CSS in Cypress Report
-      #   run: node inlineCss.js
+
+      - name: Overwrite Existing Report
+        run: mv cypress/reports/*.html cypress/reports/index.html
+
       - name: Send Cypress Report via Email
         run: node integration/email.js
-
 
     env:
       EMAIL_USER: ${{ secrets.EMAIL_USER }}
