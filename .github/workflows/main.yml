@@ -35,14 +35,6 @@ jobs:
         run: |
           git config --global user.name 'Raju'
           git config --global user.email 'vraju9949@gmail.com'
-      
-      - name: List report files
-        run: ls -la cypress/reports
-
-      - name: Overwrite Existing Report
-        run: |
-         mkdir -p cypress/reports
-         mv cypress/reports/*.html cypress/reports/index.html
 
       - name: Send Cypress Report via Email
         run: node integration/email.js
