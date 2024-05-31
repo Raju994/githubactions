@@ -51,7 +51,7 @@ jobs:
       # - name: Inline CSS in Cypress Report
       #   run: node inlineCss.js
       - name: Send Cypress Report via Email
-        run: node email.js
+        run: node integration\email.js
 
 
     env:
