@@ -18,7 +18,7 @@ jobs:
         run: npx cypress run
 
       - name: Generate Cypress Report
-        run: npm run cy:report
+        run: npm run report
 
       - name: Send Cypress Report via Email
         run: node sendEmail.js
