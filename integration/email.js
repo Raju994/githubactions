@@ -17,9 +17,9 @@ const mailOptions = {
   attachments: [
     {
       filename: 'index.html',
-      path: 'cypress/reports/index.html' // Replace with the path to the first file
+      path: 'cypress/reports/html/index.html' // Replace with the path to the first file
     },
-    
+
   ]
 };
 
