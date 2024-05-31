@@ -30,7 +30,7 @@ jobs:
       - name: commit
         run: git add .
       - name: commit
-        run: git push
+        run: git commit -m "Commit generated Cypress reports"
 
       - name: List report files
         run: ls -la cypress/reports
