@@ -30,29 +30,52 @@ jobs:
 
       - name: Run Cypress tests
         run: npm run cy:run
-     
-
-
-      - name: Configure Git
-        run: |
-          git config --global user.name 'Raju'
-          git config --global user.email 'vraju9949@gmail.com'
-      - name: commit
-        run: git add .
-      - name: commit
-        run: git commit -m "Commit generated Cypress reports"
-      - name: push
-        run: git push 
 
       - name: List report files
         run: ls -la cypress/reports
-      - name: Generate Cypress Report
-        run: npm run cy:report
-      - name: Inline CSS in Cypress Report
-        run: node inlineCss.js
-      - name: Send Cypress Report via Email
-        run: node email.js
 
+      - name: Check for JSON report files
+        id: check_reports
+        run: |
+          if ls cypress/reports/*.json 1> /dev/null 2>&1; then
+            echo "Reports found"
+            echo "found=true" >> $GITHUB_ENV
+          else
+            echo "No reports found"
+            echo "found=false" >> $GITHUB_ENV
+          fi
+
+      - name: Generate Cypress Report
+        if: env.found == 'true'
+        run: npm run cy:report
+
+      - name: Inline CSS in Cypress Report
+        if: env.found == 'true'
+        run: node inlineCss.js
+
+      - name: Configure Git
+        if: env.found == 'true'
+        run: |
+          git config --global user.name 'Raju'
+          git config --global user.email 'vraju9949@gmail.com'
+
+      - name: Add changes
+        if: env.found == 'true'
+        run: git add .
+
+      - name: Commit changes
+        if: env.found == 'true'
+        run: git commit -m "Commit generated Cypress reports" || echo "No changes to commit"
+
+      - name: Push changes
+        if: env.found == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: git push
+
+      - name: Send Cypress Report via Email
+        if: env.found == 'true'
+        run: node email.js
 
     env:
       EMAIL_USER: ${{ secrets.EMAIL_USER }}
