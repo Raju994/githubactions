@@ -1,44 +1,40 @@
-name: Cypress Tests
+name: End-to-end tests
 
 on:
-  push:
-    branches:
-      - master
   workflow_dispatch:
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Cache Cypress binary
-        uses: actions/cache@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          path: ~/.cache/Cypress
-          key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-cypress-
+          node-version: '14'
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm install
 
       - name: Install Cypress
         run: npx cypress install
 
-      - name: Run Cypress tests
-        run: npm run cy:run
+      - name: Run Tests
+        run: npx cypress run --spec cypress/e2e/First.spec.cy.js
 
       - name: Configure Git
         run: |
-          git config --global user.name 'Raju'
-          git config --global user.email 'vraju9949@gmail.com'
+          git config --global user.email "vraju9949@gmail.com"
+          git config --global user.name "Uppala Raju"
 
-      - name: Send Cypress Report via Email
+      - name: Commit Changes
+        run: |
+          git add .
+          git commit -m "Add Cypress test report"
+      
+      - name: Push Changes
+        run: git push
+      - name: Email
         run: node integration/email.js
-
-    env:
-      EMAIL_USER: ${{ secrets.EMAIL_USER }}
-      EMAIL_PASS: ${{ secrets.EMAIL_PASS }}

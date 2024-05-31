@@ -1,37 +1,34 @@
-
-
 const nodemailer = require('nodemailer');
-const fs = require('fs');
 
-async function sendEmail() {
-  let transporter = nodemailer.createTransport({
-    service: 'gmail', // or another email service
-    auth: {
-      user: 'vraju9949@gmail.com',
-      pass: 'dqcn wnwg wwxn bdso'
-    }
-  });
+// Email configuration
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'vraju9949@gmail.com',
+    pass: 'dqcn wnwg wwxn bdso'
+  }
+});
 
-  let mailOptions = {
-    from: 'vraju9949@gmail.com',
-    to: 'vraju9949@gmail.com',
-    subject: 'Cypress Test Report',
-    text: 'Please find the Cypress test report attached.',
-    attachments: [
-      {
-        filename: 'report.html',
-        path: 'cypress/reports/index.html',
-        contentType: 'text/html'
-      }
-    ]
-  };
+// Mail options
+const mailOptions = {
+  from: 'vraju9949@gmail.com',
+  to: 'vraju9949@gmail.com',
+  subject: 'Sending Files via Email',
+  attachments: [
+    {
+      filename: 'index.html',
+      path: 'cypress/reports/html/index.html' // Replace with the path to the first file
+    },
+    
+  ]
+};
 
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      return console.log(error);
-    }
-    console.log('Email sent: ' + info.response);
-  });
-}
+// Send email
+transporter.sendMail(mailOptions, function(error, info) {
+  if (error) {
+    console.log('Error occurred while sending email:', error);
+  } else {
+    console.log('Email sent:', info.response);
+  }
+});
 
-sendEmail();
